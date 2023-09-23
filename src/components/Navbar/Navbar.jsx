@@ -10,35 +10,51 @@ function Navbar() {
 
   return (
     <nav>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
+      <div className="navbar-left">
+        <Link to="/">
+          <span className="navbar-title">SELLIT</span>
+        </Link>
+      </div>
 
-      {isLoggedIn && (
-        <>
-          <button onClick={logOutUser}>Logout</button>
+      <div className="navbar-right">
+        {isLoggedIn && (
+          <>
+            <button onClick={logOutUser}>Logout</button>
 
-          <Link to="/profile">
-            <button>Profile</button>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
-          </Link>
+            <Link to="/profile">
+              <button>Profile</button>
+              {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
+            </Link>
 
-          <span>{user && user.name}</span>
-        </>
-      )}
+            <span>{user && user.name}</span>
+          </>
+        )}
 
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            {" "}
-            <button>Sign Up</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button>Login</button>{" "}
-          </Link>
-        </>
-      )}
+        {!isLoggedIn && (
+          <>
+            <Link to="/signup">
+              <button>Sign Up</button>
+            </Link>
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          </>
+        )}
+        
+        
+        <Link to="/clothes">
+          <button>Clothes</button>
+        </Link>
+        <Link to="/shoes">
+          <button>Shoes</button>
+        </Link>
+        <Link to="/jewelry">
+          <button>Jewelry</button>
+        </Link>
+        <Link to="/electronics">
+          <button>Electronics</button>
+        </Link>
+      </div>
     </nav>
   );
 }

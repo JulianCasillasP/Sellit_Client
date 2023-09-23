@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Sellit_Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Proyecto de Venta de Artículos Usados
 
-## Available Scripts
+Bienvenido al repositorio del Proyecto de Venta de Artículos Usados. Esta aplicación web permite a los usuarios comprar y vender artículos usados de manera sencilla y eficiente. 
+Bienvenido al repositorio del Proyecto de Venta de Artículos Usados. Esta aplicación web permite a los usuarios comprar y vender artículos usados de manera sencilla y eficiente. 
 
-In the project directory, you can run:
+## Repositorios
 
-### `npm start`
+Este proyecto se divide en dos repositorios separados:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ https://github.com/JulianCasillasP/Sellit_Client
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ https://github.com/JulianCasillasP/Sellit_Server
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Este frontend se encuentra en un repositorio independiente al backend para facilitar el desarrollo. 
 
-### `npm run build`
+## Despliegue
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Puedes ver la aplicación completamente desplegada aquí.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Guía de instalación
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Hacer un fork de este repositorio
+- Clonar este repositorio
 
-### `npm run eject`
+```shell
+$ cd Sellit_Client
+$ npm install
+$ npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Funcionalidades
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+El frontend del Proyecto de Venta de Artículos Usados ofrece las siguientes funcionalidades:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Explorar Artículos: Los usuarios pueden navegar y explorar la lista de artículos disponibles para la compra.
 
-## Learn More
+Ver Detalles del Artículo: Los usuarios pueden ver detalles completos de un artículo específico, incluyendo su nombre, fotografía, descripción, precio y condición.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Crear un Nuevo Artículo: Los usuarios registrados pueden crear nuevos anuncios para vender sus artículos usados.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Editar y Eliminar Anuncios: Los usuarios registrados pueden editar y eliminar sus propios anuncios.
 
-### Code Splitting
+Registro y Autenticación: Los usuarios pueden registrarse como nuevos usuarios y autenticarse para acceder a funciones exclusivas.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Rutas
 
-### Analyzing the Bundle Size
+| Route                               | Privacy          | Renders                   |
+| ----------------------------------- | :--------------: | --------------------------|
+| /                                   | Public           | Home Page                 |
+| /categories                         | Public           | Categories Page           |
+| /categories/:category               | Public           | Articles List Page        |
+| /categories/:category/:id           | Public           | Article Details Page      |
+| /post-article                       | Private (user)   | Post Article Form         |
+| /login                              | Public           | Login Page                |
+| /signup                             | Public           | Signup Page               |
+| /profile                            | Private (user)   | User Profile Page         |
+| /my-articles                        | Private (user)   | My Articles List Page     |
+| /my-purchases                       | Private (user)   | My Purchases List Page    |
+| /admin                              | Private (admin)  | Admin Panel Page          |
+| /admin/article/:id                  | Private (admin)  | Edit Article Page         |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Uso de Componentes y Estilos
+En el desarrollo de este frontend, hemos utilizado una variedad de componentes de React y estilos CSS para lograr una interfaz de usuario atractiva y fácil de usar. Estos componentes y estilos se han organizado de manera modular y se pueden reutilizar en todo el proyecto.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Componentes
+- Navigation Bar (Navbar)
+- Article Form (ArticleForm)
+- Article List (ArticleList)
+- Article Details (ArticleDetails)
+- Login Form (LoginForm)
+- Signup Form (SignupForm)
+- User Profile (UserProfile)
+- My Articles List (MyArticlesList)
+- My Purchases List (MyPurchasesList)
