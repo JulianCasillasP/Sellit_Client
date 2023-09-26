@@ -43,8 +43,8 @@ function Navbar() {
         
         
        
-        <Link to="/Products">
-          <button>Products</button>
+        <Link to="/Articles">
+          <button>Articles</button>
         </Link>
       </div>
     </nav>
