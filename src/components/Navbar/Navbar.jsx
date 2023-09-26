@@ -42,17 +42,9 @@ function Navbar() {
         )}
         
         
-        <Link to="/clothes">
-          <button>Clothes</button>
-        </Link>
-        <Link to="/shoes">
-          <button>Shoes</button>
-        </Link>
-        <Link to="/jewelry">
-          <button>Jewelry</button>
-        </Link>
-        <Link to="/electronics">
-          <button>Electronics</button>
+       
+        <Link to="/Products">
+          <button>Products</button>
         </Link>
       </div>
     </nav>
