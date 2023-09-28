@@ -1,0 +1,35 @@
+.article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cambia el ancho mínimo y máximo según tus necesidades */
+    grid-gap: 16px; /* Espacio entre las fichas */
+    list-style: none;
+    padding: 0;
+  }
+  
+  .article-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Media query para pantallas medianas */
+  @media (max-width: 1024px) {
+    .article-card {
+      flex: 0 0 calc(33.333% - 16px); 
+    }
+  }
+  
+  /* Media query para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .article-card {
+      flex: 0 0 calc(50% - 16px); 
+    }
+  }
+  
+  /* Media query para pantallas muy pequeñas */
+  @media (max-width: 576px) {
+    .article-card {
+      flex: 0 0 calc(100% - 16px); 
+    }
+  }
