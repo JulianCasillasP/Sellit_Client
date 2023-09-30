@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import "./ArticleDetails.css"
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
 import { useNavigate } from 'react-router-dom'; 
@@ -27,7 +26,7 @@ function ArticleDetail() {
     return <div>Cargando...</div>;
   }
 
-  const isOwner = article.user === user.id;
+  const isOwner = article.seller._id === user._id;
 
   const handleEdit = () => {
     if (isOwner) {
@@ -51,13 +50,14 @@ function ArticleDetail() {
   };
 
   return (
-    <div className="container">
+    <div>
       <h1>Detalles del Artículo</h1>
       <h2>{article.name}</h2>
       <p>Descripción: {article.description}</p>
       <p>Precio: ${article.price}</p>
       <p>Condición: {article.condition}</p>
       <p>Categoría: {article.category}</p>
+      <p>Vendido por: {article.seller.username}</p>
       {article.imageUrl && (
         <div>
           <h3>Imagen:</h3>
@@ -66,7 +66,7 @@ function ArticleDetail() {
       )}
 
       {isOwner && (
-        <div className="action-buttons">
+        <div>
           <button onClick={handleEdit}>Editar</button>
           <button onClick={handleDelete}>Eliminar</button>
         </div>

@@ -11,17 +11,16 @@ function ArticleForm() {
     description: '',
     price: 0,
     condition: 'new',
-    seller: '',
     category: 'clothes',
     imageUrl: '',
   });
 
   const authContext = useContext(AuthContext);
-  const navigate = useNavigate(); // Hook para navegar
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (authContext.isLoggedIn) {
-      setArticleData({ ...articleData, seller: authContext.user.username });
+      setArticleData({ ...articleData, seller: authContext.user._id });
     }
   }, [authContext.isLoggedIn, authContext.user, articleData]);
 
@@ -33,13 +32,29 @@ function ArticleForm() {
     });
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      // Al cargar la imagen, actualiza la URL de la imagen en el estado
+      setArticleData({
+        ...articleData,
+        imageUrl: reader.result, // Establece la URL de la imagen en base64
+      });
+    };
+
+    if (file) {
+      reader.readAsDataURL(file); // Lee la imagen como una URL de datos
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
       .post(`${API_URL}/article/add`, articleData)
       .then((response) => {
-        console.log(articleData);
         console.log('Artículo creado:', response.data);
 
         // Navega a la página de inicio después de crear el artículo
@@ -48,8 +63,7 @@ function ArticleForm() {
       .catch((error) => {
         console.error('Error al crear el artículo:', error);
       });
-  }
-
+  };
 
   return (
     <div>
@@ -112,12 +126,12 @@ function ArticleForm() {
           </select>
         </label>
         <label>
-          URL de la imagen:
+          Imagen:
           <input
-            type="text"
-            name="imageUrl"
-            value={articleData.imageUrl}
-            onChange={handleInputChange}
+            type="file"
+            name="imageFile"
+            accept="image/*"
+            onChange={handleImageChange}
           />
         </label>
         <button type="submit">Crear Artículo</button>

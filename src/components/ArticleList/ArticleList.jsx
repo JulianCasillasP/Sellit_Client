@@ -6,7 +6,6 @@ import './ArticleList.css'; // Importa tu archivo de CSS personalizado
 function ArticleList() {
   const API_URL = 'http://localhost:5005';
   const [articles, setArticles] = useState([]);
-  const [userNames, setUserNames] = useState({});
 
   useEffect(() => {
     // Obtener la lista de artículos al cargar el componente
@@ -21,36 +20,6 @@ function ArticleList() {
       });
   }, []);
 
-  useEffect(() => {
-    // Obtener los nombres de usuario
-    const userPromises = articles.map((article) =>
-      fetchUserName(article.user)
-        .then((userName) => {
-          setUserNames((prevUserNames) => ({
-            ...prevUserNames,
-            [article.user]: userName,
-          }));
-        })
-        .catch((error) => {
-          console.error('Error al obtener el nombre del usuario:', error);
-        })
-    );
-    // Esperar a que se resuelvan todas las promesas
-    Promise.all(userPromises);
-  }, [articles]);
-
-  const fetchUserName = (userId) => {
-    // Realiza una solicitud para obtener el nombre del usuario
-    return axios
-      .get(`${API_URL}/users/${userId}`)
-      .then((response) => {
-        return response.data.username;
-      })
-      .catch((error) => {
-        console.error('Error al obtener el nombre del usuario:', error);
-        return 'Usuario Desconocido'; // En caso de error, mostrar un valor predeterminado
-      });
-  };
 
   return (
     <div>
@@ -62,7 +31,14 @@ function ArticleList() {
             <p>Descripción: {article.description}</p>
             <p>Precio: ${article.price}</p>
             <p>Condición: {article.condition}</p>
-            <p>Creado por: {userNames[article.user] || 'Cargando...'}</p>
+            <p>Creado por: {article.seller.username}</p>
+            
+            {article.imageUrl && (
+              <div>
+                <h3>Imagen:</h3>
+                <img src={article.imageUrl} alt={article.name} />
+              </div>
+            )}
             <Link to={`/article/${article._id}`}>Ver detalles</Link>
           </li>
         ))}
