@@ -32,13 +32,11 @@ function ArticleList() {
             <p>Precio: ${article.price}</p>
             <p>Condición: {article.condition}</p>
             <p>Creado por: {article.seller.username}</p>
-            
-            {article.imageUrl && (
-              <div>
-                <h3>Imagen:</h3>
-                <img src={article.imageUrl} alt={article.name} />
-              </div>
-            )}
+            <img
+              className="image"
+              src={article.imageUrl[0]}
+              alt={article.title}
+            />
             <Link to={`/article/${article._id}`}>Ver detalles</Link>
           </li>
         ))}

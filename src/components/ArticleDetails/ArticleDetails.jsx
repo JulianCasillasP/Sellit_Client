@@ -58,19 +58,21 @@ function ArticleDetail() {
       <p>Condición: {article.condition}</p>
       <p>Categoría: {article.category}</p>
       <p>Vendido por: {article.seller.username}</p>
-      {article.imageUrl && (
-        <div>
-          <h3>Imagen:</h3>
-          <img src={article.imageUrl} alt={article.name} />
+      <div className="images">
+          {article.imageUrl.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`Imagen ${index + 1} de productos`}
+              className="image"
+            />
+          ))}
         </div>
-      )}
-
-      {isOwner && (
         <div>
           <button onClick={handleEdit}>Editar</button>
           <button onClick={handleDelete}>Eliminar</button>
         </div>
-      )}
+     
     </div>
   );
 }
