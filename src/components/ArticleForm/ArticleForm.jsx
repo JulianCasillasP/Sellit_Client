@@ -130,7 +130,6 @@ function ArticleForm() {
           <input
             type="file"
             name="imageUrl"
-            accept="image/*"
             onChange={handleImageChange}
           />
         </label>
