@@ -12,7 +12,7 @@ function ArticleForm() {
     price: 0,
     condition: 'new',
     category: 'clothes',
-    imageUrl: '',
+    imageUrl: null, // Removed the imageUrl field from the initial state
   });
 
   const authContext = useContext(AuthContext);
@@ -52,8 +52,21 @@ function ArticleForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append('name', articleData.name);
+    formData.append('description', articleData.description);
+    formData.append('price', articleData.price);
+    formData.append('condition', articleData.condition);
+    formData.append('category', articleData.category);
+    formData.append('seller', articleData.seller);
+    formData.append('image', articleData.imageUrl); // Append the base64 image data as 'image'
+
     axios
-      .post(`${API_URL}/article/add`, articleData)
+      .post(`${API_URL}/article/add`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Set the correct content type for file upload
+        },
+      })
       .then((response) => {
         console.log('Artículo creado:', response.data);
 
@@ -129,8 +142,10 @@ function ArticleForm() {
           Imagen:
           <input
             type="file"
-            name="imageUrl"
+            name="image" // Change the name attribute to 'image'
             onChange={handleImageChange}
+            accept="image/*" // Allow only image files
+            required
           />
         </label>
         <button type="submit">Crear Artículo</button>
