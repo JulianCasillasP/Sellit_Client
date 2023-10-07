@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
-import { useNavigate } from 'react-router-dom'; 
 
 function ArticleDetail() {
   const API_URL = 'http://localhost:5005';
@@ -69,9 +68,13 @@ function ArticleDetail() {
           ))}
         </div>
         <div>
-          <button onClick={handleEdit}>Editar</button>
-          <button onClick={handleDelete}>Eliminar</button>
-        </div>
+        {isOwner && (
+          <div>
+            <button onClick={handleEdit}>Editar</button>
+            <button onClick={handleDelete}>Eliminar</button>
+          </div>
+        )}
+      </div>
      
     </div>
   );

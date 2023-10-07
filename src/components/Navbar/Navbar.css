@@ -15,7 +15,7 @@ nav {
   }
   
   .navbar-title {
-    font-weight: bold;
+ 
     font-size: 32px;
     color: white;
   }
@@ -27,11 +27,8 @@ nav {
   }
   
   button {
-    background-color: #0074D9;
-    color: white;
     border: none;
     border-radius: 20px;
-    padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     text-decoration: none;
@@ -46,6 +43,5 @@ nav {
   button:hover {
     background-color: #0056b3;
   }
-  
   
   

@@ -1,0 +1,13 @@
+.profile-page {
+    text-align: center; /* Alinea el contenido al centro */
+  }
+  
+  /* Botón "Crear Artículo" */
+  .create-article-button {
+    position: absolute;
+    left: 20px;
+    display: block; /* Cambia el botón a un elemento de bloque para que ocupe todo el ancho disponible */
+    margin: 0 auto; /* Centra el botón horizontalmente en el contenedor */
+    width: auto; /* Ancho automático para adaptarse al contenido del botón */
+    text-align: left; /* Alinea el texto del botón a la izquierda */
+  }

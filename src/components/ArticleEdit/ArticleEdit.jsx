@@ -58,7 +58,7 @@ function ArticleEdit() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Editar Artículo</h1>
       <form onSubmit={handleSubmit}>
         <label>

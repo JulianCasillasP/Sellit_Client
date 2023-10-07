@@ -1,31 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// UserProfile.js
+
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/auth.context';
 
 function UserProfile() {
-  const [user, setUser] = useState(null);
+  const authContext = useContext(AuthContext);
 
-  useEffect(() => {
-    axios.get('/api/:userId') // Ajusta la ruta de la API según tu configuración
-      .then((response) => {
-        setUser(response.data);
-      })
-      .catch((error) => {
-        console.error('Error al obtener los detalles del usuario:', error);
-      });
-  }, []);
+ 
+  const { username, email } = authContext.user;
 
   return (
     <div>
-      {user ? (
-        <div>
-          <h2>Perfil de Usuario</h2>
-          <p>Nombre de usuario: {user.username}</p>
-          <p>Correo electrónico: {user.email}</p>
-          <p>Es administrador: {user.isAdmin ? 'Sí' : 'No'}</p>
-        </div>
-      ) : (
-        <p>Cargando detalles del usuario...</p>
-      )}
+      
+      <h3>{username}</h3>
+      <h3>Correo electrónico: {email}</h3>
     </div>
   );
 }
