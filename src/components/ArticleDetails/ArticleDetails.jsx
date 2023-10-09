@@ -58,7 +58,7 @@ function ArticleDetail() {
       <p>Categoría: {article.category}</p>
       <p>Vendido por: {article.seller.username}</p>
       <div className="images">
-          {article.imageUrl.map((image, index) => (
+          {article.image.map((image, index) => (
             <img
               key={index}
               src={image}

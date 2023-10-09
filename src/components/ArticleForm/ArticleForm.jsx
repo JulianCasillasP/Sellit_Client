@@ -12,7 +12,7 @@ function ArticleForm() {
     price: 0,
     condition: 'new',
     category: 'clothes',
-    imageUrl: null, // Removed the imageUrl field from the initial state
+    
   });
 
   const authContext = useContext(AuthContext);
@@ -40,7 +40,7 @@ function ArticleForm() {
       // Al cargar la imagen, actualiza la URL de la imagen en el estado
       setArticleData({
         ...articleData,
-        imageUrl: reader.result, // Establece la URL de la imagen en base64
+        image: reader.result, // Establece la URL de la imagen en base64
       });
     };
 
@@ -59,7 +59,7 @@ function ArticleForm() {
     formData.append('condition', articleData.condition);
     formData.append('category', articleData.category);
     formData.append('seller', articleData.seller);
-    formData.append('image', articleData.imageUrl); // Append the base64 image data as 'image'
+    formData.append(`image`, articleData.image); 
 
     axios
       .post(`${API_URL}/article/add`, formData, {
@@ -142,9 +142,10 @@ function ArticleForm() {
           Imagen:
           <input
             type="file"
-            name="image" // Change the name attribute to 'image'
+            name="image" 
             onChange={handleImageChange}
-            accept="image/*" // Allow only image files
+            multiple
+            accept="image/*" 
             required
           />
         </label>

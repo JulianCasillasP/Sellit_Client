@@ -35,38 +35,40 @@ function ArticleList() {
     ? articles.filter((article) => article.category === selectedCategory)
     : articles;
 
-  return (
-    <div>
-      <h1>Lista de Artículos</h1>
-      <div className="category-buttons">
-        <button className="category-buttons" onClick={() => setSelectedCategory('')}>
-          Todos
-        </button>
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => filterArticlesByCategory(category)}
-            className={category === selectedCategory ? 'active' : ''}
-          >
-            {category}
+    return (
+      <div>
+        <h1>Lista de Artículos</h1>
+        <div className="category-buttons">
+          <button className="category-buttons" onClick={() => setSelectedCategory('')}>
+            Todos
           </button>
-        ))}
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => filterArticlesByCategory(category)}
+              className={category === selectedCategory ? 'active' : ''}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+        {articles.length === 0 ? (
+          <p>Loading articles...</p>
+        ) : (
+          <ul className="article-list">
+            {filteredArticles.map((article) => (
+              <li key={article._id} className="article-card">
+                <h2>{article.name}</h2>
+                <p>Condición: {article.condition}</p>
+                <p>Creado por: {article.seller.username}</p>
+                <img className="image" src={article.image[0]} alt={article.title} />
+                <Link to={`/article/${article._id}`}>Ver detalles</Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <ul className="article-list">
-        {filteredArticles.map((article) => (
-          <li key={article._id} className="article-card">
-            <h2>{article.name}</h2>
-            <p>Condición: {article.condition}</p>
-            <p>Creado por: {article.seller.username}</p>
-            <img className="image" src={article.imageUrl[0]} alt={article.title} />
-            
-              <Link to={`/article/${article._id}`}>Ver detalles</Link>
-         
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+    );
+ }
 
 export default ArticleList;

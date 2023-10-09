@@ -13,7 +13,7 @@ function ArticleEdit() {
     price: 0,
     condition: 'new',
     category: 'clothes',
-    imageUrl: '',
+    image: '',
   });
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function ArticleEdit() {
           price: articleData.price,
           condition: articleData.condition,
           category: articleData.category,
-          imageUrl: articleData.imageUrl,
+          image: articleData.image,
         });
       })
       .catch((error) => {
@@ -121,8 +121,8 @@ function ArticleEdit() {
           URL de la imagen:
           <input
             type="text"
-            name="imageUrl"
-            value={formData.imageUrl}
+            name="image"
+            value={formData.image}
             onChange={handleInputChange}
           />
         </label>

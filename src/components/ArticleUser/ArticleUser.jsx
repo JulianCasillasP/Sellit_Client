@@ -34,7 +34,7 @@ function ArticleUser() {
             <p>Descripción: {article.description}</p>
             <p>Precio: ${article.price}</p>
             <p>Condición: {article.condition}</p>
-            <img className="image" src={article.imageUrl[0]} alt={article.title} />
+            <img className="image" src={article.image[0]} alt={article.title} />
             <Link to={`/article/${article._id}`}>Ver detalles</Link>
           </li>
         ))}
