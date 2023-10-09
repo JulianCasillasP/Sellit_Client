@@ -1,82 +1,69 @@
-import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
-import { AuthContext } from '../../context/auth.context';
-import './ArticleForm.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
+import axios from 'axios'
+import { AuthContext } from '../../context/auth.context'
+import './ArticleForm.css'
+import { useNavigate } from 'react-router-dom'
 
 function ArticleForm() {
-  const API_URL = 'http://localhost:5005';
+  const API_URL = 'http://localhost:5005'
   const [articleData, setArticleData] = useState({
     name: '',
     description: '',
     price: 0,
     condition: 'new',
     category: 'clothes',
-    
-  });
+  })
 
-  const authContext = useContext(AuthContext);
-  const navigate = useNavigate();
+  const [selectedImage, setSelectedImage] = useState(null)
+
+  const authContext = useContext(AuthContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (authContext.isLoggedIn) {
-      setArticleData({ ...articleData, seller: authContext.user._id });
+      setArticleData({ ...articleData, seller: authContext.user._id })
     }
-  }, [authContext.isLoggedIn, authContext.user, articleData]);
+  }, [articleData, authContext])
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setArticleData({
       ...articleData,
       [name]: value,
-    });
-  };
+    })
+  }
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      // Al cargar la imagen, actualiza la URL de la imagen en el estado
-      setArticleData({
-        ...articleData,
-        image: reader.result, // Establece la URL de la imagen en base64
-      });
-    };
-
-    if (file) {
-      reader.readAsDataURL(file); // Lee la imagen como una URL de datos
-    }
-  };
+    const file = e.target.files[0]
+    setSelectedImage(file)
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const formData = new FormData();
-    formData.append('name', articleData.name);
-    formData.append('description', articleData.description);
-    formData.append('price', articleData.price);
-    formData.append('condition', articleData.condition);
-    formData.append('category', articleData.category);
-    formData.append('seller', articleData.seller);
-    formData.append(`image`, articleData.image); 
+    const formDataWithImage = new FormData()
+    Object.entries(articleData).forEach(([key, value]) => {
+      formDataWithImage.append(key, value)
+    })
+
+    formDataWithImage.append('image', selectedImage)
 
     axios
-      .post(`${API_URL}/article/add`, formData, {
+      .post(`${API_URL}/article/add`, formDataWithImage, {
         headers: {
           'Content-Type': 'multipart/form-data', // Set the correct content type for file upload
         },
       })
       .then((response) => {
-        console.log('Artículo creado:', response.data);
+        console.log('Artículo creado:', response.data)
 
         // Navega a la página de inicio después de crear el artículo
-        navigate('/');
+        navigate('/')
       })
       .catch((error) => {
-        console.error('Error al crear el artículo:', error);
-      });
-  };
+        console.error('Error al crear el artículo:', error)
+      })
+  }
 
   return (
     <div>
@@ -138,21 +125,21 @@ function ArticleForm() {
             <option value="electronics">Electrónica</option>
           </select>
         </label>
-        <label>
+        <label htmlFor="product-image">
           Imagen:
           <input
             type="file"
-            name="image" 
+            name="image"
             onChange={handleImageChange}
             multiple
-            accept="image/*" 
+            accept="image/*"
             required
           />
         </label>
         <button type="submit">Crear Artículo</button>
       </form>
     </div>
-  );
+  )
 }
 
-export default ArticleForm;
+export default ArticleForm

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './ArticleList.css'; // Importa tu archivo de CSS personalizado
@@ -53,7 +53,7 @@ function ArticleList() {
           ))}
         </div>
         {articles.length === 0 ? (
-          <p>Loading articles...</p>
+          <p>No hay articulos disponibles.</p>
         ) : (
           <ul className="article-list">
             {filteredArticles.map((article) => (

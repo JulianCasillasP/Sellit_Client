@@ -35,3 +35,9 @@ button {
 button.active {
   background-color: blue; /* Color de fondo activo */
 }
+
+
+.image {
+  width: 300px;
+  height: 300px;
+}
