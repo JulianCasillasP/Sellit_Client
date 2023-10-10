@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/auth.context';
 function ArticleDetail() {
   const API_URL = 'http://localhost:5005';
   const { articleId } = useParams();
-  const { user } = useContext(AuthContext);
+  const { user, isAdmin } = useContext(AuthContext); 
   const navigate = useNavigate(); 
   const [article, setArticle] = useState(null);
 
@@ -28,14 +28,14 @@ function ArticleDetail() {
   const isOwner = article.seller._id === user._id;
 
   const handleEdit = () => {
-    if (isOwner) {
-      // Navega a la página de edición si es el propietario
+    if (isOwner || isAdmin) {
+      // Navega a la página de edición si es el propietario o es un administrador
       navigate(`/edit-article/${articleId}`);
     }
   };
 
   const handleDelete = () => {
-    if (isOwner) {
+    if (isOwner || isAdmin) {
       axios
         .delete(`${API_URL}/article/${articleId}`)
         .then(() => {
@@ -58,24 +58,23 @@ function ArticleDetail() {
       <p>Categoría: {article.category}</p>
       <p>Vendido por: {article.seller.username}</p>
       <div className="images">
-          {article.image.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Imagen ${index + 1} de productos`}
-              className="image"
-            />
-          ))}
-        </div>
-        <div>
-        {isOwner && (
+        {article.image.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Imagen ${index + 1} de productos`}
+            className="image"
+          />
+        ))}
+      </div>
+      <div>
+        {(isOwner || isAdmin) && (
           <div>
             <button onClick={handleEdit}>Editar</button>
             <button onClick={handleDelete}>Eliminar</button>
           </div>
         )}
       </div>
-     
     </div>
   );
 }
