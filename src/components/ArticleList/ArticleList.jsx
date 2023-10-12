@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './ArticleList.css'; // Importa tu archivo de CSS personalizado
+import './ArticleList.css';
+import { AuthContext } from '../../context/auth.context';
 
 function ArticleList() {
   const API_URL = 'http://localhost:5005';
   const [articles, setArticles] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
-  
+  const { isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     // Obtener la lista de artículos al cargar el componente
@@ -22,6 +23,14 @@ function ArticleList() {
       });
   }, []);
 
+  // Traducción de categorías
+  const categoryTranslations = {
+    clothes: 'Clothes',
+    shoes: 'Shoes',
+    electronics: 'Electrónics',
+    jewels: 'Jewels',
+  };
+
   // Obtén todas las categorías únicas de los artículos
   const categories = Array.from(new Set(articles.map((article) => article.category)));
 
@@ -35,40 +44,47 @@ function ArticleList() {
     ? articles.filter((article) => article.category === selectedCategory)
     : articles;
 
-    return (
-      <div>
-        <h1>Lista de Artículos</h1>
-        <div className="category-buttons">
-          <button className="category-buttons" onClick={() => setSelectedCategory('')}>
-            Todos
+  return (
+    <div>
+      <div className="category-buttons">
+        <button className={`button ${selectedCategory === '' ? 'active' : ''}`} onClick={() => setSelectedCategory('')}>
+          All
+        </button>
+        {categories.map((category) => (
+          <button
+            key={category}
+            className={`button ${category === selectedCategory ? 'active' : ''}`}
+            onClick={() => filterArticlesByCategory(category)}
+          >
+            {categoryTranslations[category] || category}
           </button>
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => filterArticlesByCategory(category)}
-              className={category === selectedCategory ? 'active' : ''}
-            >
-              {category}
-            </button>
+        ))}
+      </div>
+
+      {articles.length === 0 ? (
+        <p>No hay artículos disponibles.</p>
+      ) : (
+        <div className="article-list">
+          {filteredArticles.map((article) => (
+            <div key={article._id} className="article-card">
+              <div className="article-image">
+                <img className="image" src={article.image[0]} alt={article.title} />
+              </div>
+              <div className="article-details">
+                <h2>{article.name}</h2>
+                <p>Precio: ${article.price}</p>
+                {isLoggedIn && (
+                  <button className="details-button">
+                    <Link to={`/article/${article._id}`}>Ver detalles</Link>
+                  </button>
+                )}
+              </div>
+            </div>
           ))}
         </div>
-        {articles.length === 0 ? (
-          <p>No hay articulos disponibles.</p>
-        ) : (
-          <ul className="article-list">
-            {filteredArticles.map((article) => (
-              <li key={article._id} className="article-card">
-                <h2>{article.name}</h2>
-                <p>Condición: {article.condition}</p>
-                <p>Creado por: {article.seller.username}</p>
-                <img className="image" src={article.image[0]} alt={article.title} />
-                <Link to={`/article/${article._id}`}>Ver detalles</Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
- }
+      )}
+    </div>
+  );
+}
 
 export default ArticleList;

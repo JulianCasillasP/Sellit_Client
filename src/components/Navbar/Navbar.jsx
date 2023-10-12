@@ -1,45 +1,50 @@
-import "./Navbar.css";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
+import "./Navbar.css"; // Asegúrate de importar tus estilos CSS
 
 function Navbar() {
-  // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
+    <nav className="navbar">
       <div className="navbar-left">
         <Link to="/">
-          <span className="navbar-title">SELLIT</span>
+          <img
+            src="/sellit-.png" // Reemplaza con la ruta correcta de tu imagen
+            alt="Sellit"
+            className="navbar-logo"
+          />
         </Link>
       </div>
 
       <div className="navbar-right">
         {isLoggedIn && (
           <>
-            <button onClick={logOutUser}>Logout</button>
+            <button className="navbar-button" onClick={logOutUser}>
+              Logout
+            </button>
 
             <Link to="/profile">
-              <button>Profile</button>
+              <button className="navbar-button">Profile</button>
             </Link>
 
-            <span>{user && user.name}</span>
+            <span className="navbar-username">
+              {user && user.name}
+            </span>
           </>
         )}
 
         {!isLoggedIn && (
           <>
             <Link to="/signup">
-              <button>Sign Up</button>
+              <button className="navbar-button">Sign Up</button>
             </Link>
             <Link to="/login">
-              <button>Login</button>
+              <button className="navbar-button">Login</button>
             </Link>
           </>
         )}
-        
       </div>
     </nav>
   );

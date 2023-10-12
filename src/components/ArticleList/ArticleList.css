@@ -1,43 +1,66 @@
-.category-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px; /* Espacio entre los botones */
+
+.image {
+  max-width: 100%; 
+  height: auto; 
+  max-height: 200px; 
 }
 
-.all-button {
-  position: relative;
-  z-index: 1; /* Coloca el botón "Todos" en la parte superior */
-  background-color: blue; /* Color de fondo activo */
-  color: white; /* Color de texto activo */
+
+.details-button {
+  background-color: rgba(74, 74, 171, 0.97);
+  color: white;
   border: none;
   padding: 8px 16px;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s;
+  margin-top: 10px;
 }
 
-.all-button.active {
-  background-color: rgb(200, 21, 158); /* Color de fondo activo */
+.details-button a {
+  text-decoration: none;
+  color: white;
 }
 
-/* Estilos de los botones de categoría */
-button {
-  background-color: rgb(79, 91, 193); /* Color de fondo inactivo */
-  color: white; /* Color de texto inactivo */
-  border: none;
+.details-button:hover {
+  background-color: rgb(113, 104, 192);
+}
+
+
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    text-align: center; /* Centra el texto dentro de la tarjeta */
+    background-color: white; /* Agrega fondo blanco a las tarjetas de artículo */
+    padding: 10px; /* Añade un espacio interno para separar el contenido del borde */
+    border: 1px solid #ccc; /* Agrega un borde gris a las tarjetas (opcional) */
+    border-radius: 5px; /* Bordes redondeados para las tarjetas (opcional) */
+    margin-bottom: 20px; /* Añade margen inferior para separar las tarjetas */
+   
+}
+
+.article-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 200px;
+  margin-bottom: 10px; /* Espacio entre la imagen y los detalles */
+  
+}
+
+.button {
+  background-color: #80e1ff;
+  color: black;
+  border: 2px solid gray;
   padding: 8px 16px;
   cursor: pointer;
   border-radius: 10px;
   transition: background-color 0.3s;
+  margin-top: 20px;
+  margin-right: 10px; /* Añade un margen derecho para separar los botones */
+  margin-bottom: 25px; /* Agrega un margen inferior para separar los botones de la lista de artículos */
 }
 
-button.active {
-  background-color: blue; /* Color de fondo activo */
-}
-
-
-.image {
-  width: 300px;
-  height: 300px;
+.button.active {
+  background-color: #22ccff;
 }
