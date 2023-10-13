@@ -1,3 +1,5 @@
+
+
 .navbar {
   position: fixed; /* Barra de navegación fija en la parte superior */
   top: 0;
@@ -7,13 +9,18 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  padding: 0px 10px;
+  padding: 0px 0px;
   color: black;
   z-index: 1000; /* Asegura que la barra esté en la parte superior */
   transition: transform 0.3s; /* Agrega una transición suave para el desplazamiento */
   border-bottom: 4px solid #0084ac50;
+  width: 100%;
+  height: 76px;
 }
 
+img {
+  display: flex;
+}
 .navbar-left {
   display: flex;
   align-items: center;
@@ -30,18 +37,19 @@
   align-items: center;
 }
 
-button {
-  background-color: #d3f5ff; /* Color de fondo de los botones */
+.navbar-button {
+  background-color: #80e1ff; /* Color de fondo de los botones */
   color: black; /* Color del texto en los botones */
   border: 2px solid gray; /* Borde negro */
-  padding: 10px 20px; /* Ajusta el tamaño del botón según sea necesario */
+  padding: 5px 10px; /* Ajusta el tamaño del botón según sea necesario */
   margin-right: 10px; /* Espacio entre los botones */
   border-radius: 20px; /* Bordes redondeados */
   transition: background-color 0.3s;
   cursor: pointer;
+  font-family: 'Lalezar', cursive;
 }
 
-button:hover {
-  background-color: #80e1ff; /* Cambia el color de fondo en el hover */
+.navbar-button:hover {
+  background-color: #b4eeff; /* Cambia el color de fondo en el hover */
   color: black; /* Color del texto en el hover */
 }

@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
-import "./Navbar.css"; // Asegúrate de importar tus estilos CSS
+import "./Navbar.css";
+import UserProfile from "../UserProfile/UserProfile";
 
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -17,6 +18,8 @@ function Navbar() {
           />
         </Link>
       </div>
+
+      {isLoggedIn && <UserProfile/>}
 
       <div className="navbar-right">
         {isLoggedIn && (

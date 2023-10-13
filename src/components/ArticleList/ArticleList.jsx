@@ -71,12 +71,12 @@ function ArticleList() {
                 <img className="image" src={article.image[0]} alt={article.title} />
               </div>
               <div className="article-details">
-                <h2>{article.name}</h2>
-                <p>Precio: ${article.price}</p>
+                <h1>{article.name}</h1>
+                <h3>€{article.price}</h3>
                 {isLoggedIn && (
-                  <button className="details-button">
-                    <Link to={`/article/${article._id}`}>Ver detalles</Link>
-                  </button>
+                  <Link to={`/article/${article._id}`} className="details-button">
+                    Ver detalles
+                  </Link>
                 )}
               </div>
             </div>

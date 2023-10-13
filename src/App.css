@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+
 .App {
   text-align: center;
 }
 body {
   background-color:  #d3f5ff;
   margin-top: 90px;
+  font-family: 'Lalezar', cursive;
 }
+
+

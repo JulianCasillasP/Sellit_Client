@@ -13,7 +13,7 @@ function UserProfile() {
     <div>
       
       <h3>{username}</h3>
-      <h3>Correo electrónico: {email}</h3>
+      <h3>{email}</h3>
     </div>
   );
 }

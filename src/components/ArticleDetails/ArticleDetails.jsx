@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
+import "./ArticleDetails.css"
 
 function ArticleDetail() {
   const API_URL = 'http://localhost:5005';
@@ -49,29 +50,28 @@ function ArticleDetail() {
   };
 
   return (
-    <div>
-      <h1>Detalles del Artículo</h1>
-      <h2>{article.name}</h2>
-      <p>Descripción: {article.description}</p>
-      <p>Precio: ${article.price}</p>
-      <p>Condición: {article.condition}</p>
-      <p>Categoría: {article.category}</p>
-      <p>Vendido por: {article.seller.username}</p>
-      <div className="images">
-        {article.image.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Imagen ${index + 1} de productos`}
-            className="image"
-          />
-        ))}
+    <div className="container">
+     <p>Seller: {article.seller.username}</p>
+     
+      <div className="article-details">
+        <img
+          src={article.image[0]}
+          alt={`Imagen del producto`}
+          className="article-image"
+        />
+        <div className="article-info">
+          <h1>€{article.price}</h1>
+          <h2>{article.name}</h2>
+          <p>{article.condition}</p>
+          <p>Description: {article.description}</p>
+        </div>
       </div>
-      <div>
+     
+      <div className="action-buttons">
         {(isOwner || isAdmin) && (
           <div>
             <button onClick={handleEdit}>Editar</button>
-            <button onClick={handleDelete}>Eliminar</button>
+            <button className="delete" onClick={handleDelete}>Eliminar</button>
           </div>
         )}
       </div>

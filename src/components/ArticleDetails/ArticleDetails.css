@@ -1,37 +1,68 @@
 /* Estilos para el contenedor principal */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Estilos para el título principal */
-  h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilos para los botones de acción */
-  .action-buttons {
-    margin-top: 20px;
-  }
-  
-  .action-buttons button {
-    margin-right: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .action-buttons button:hover {
-    background-color: #0056b3;
-  }
-  
+  max-width: 500px;
+  padding: 20px 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.container h1 {
+  font-size: 60px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.container h2 {
+  margin-top: -40px;
+}
+
+
+/* Estilos para la imagen del artículo */
+.article-image {
+  width: 100%; /* Ajusta el ancho al 100% del contenedor */
+  max-height: 800px; /* Establece una altura máxima para controlar el volumen */
+  border-radius: 20px; /* Bordes redondeados para la imagen */
+   /* Centra la imagen horizontalmente */
+  display: block;
+}
+
+/* Estilos para la información del artículo */
+.article-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+/* Estilos para los botones de acción */
+.action-buttons {
+  margin-top: 20px;
+}
+
+.action-buttons button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-buttons .delete {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #b80000ca;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-buttons button:hover {
+  background-color: #0056b3;
+}

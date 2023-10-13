@@ -24,8 +24,6 @@ function ProfilePage() {
   return (
     <div className="profile-page">
       <h1>Mi Perfil.</h1>
-      {showCreateArticle ? null : <UserProfile />}
-      
       {showCreateArticle ? (
         <CreateArticle onArticleCreated={handleArticleCreated} />
       ) : (
@@ -33,6 +31,8 @@ function ProfilePage() {
           Crear Artículo
         </button>
       )}
+     
+      {showCreateArticle ? null : <UserProfile />}
       
       {showCreateArticle ? null : <ArticleUser user={authContext.user._id} />}
     </div>
