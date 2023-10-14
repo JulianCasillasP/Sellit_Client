@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import "./Navbar.css";
-import UserProfile from "../UserProfile/UserProfile";
+
 
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -12,14 +12,14 @@ function Navbar() {
       <div className="navbar-left">
         <Link to="/">
           <img
-            src="/sellit-.png" // Reemplaza con la ruta correcta de tu imagen
+            src="/sellit-.png" 
             alt="Sellit"
             className="navbar-logo"
           />
         </Link>
       </div>
 
-      {isLoggedIn && <UserProfile/>}
+      {isLoggedIn && <p classname>Welcome {user.username}!</p>}
 
       <div className="navbar-right">
         {isLoggedIn && (

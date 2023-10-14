@@ -13,7 +13,6 @@ function ArticleEdit() {
     price: 0,
     condition: 'new',
     category: 'clothes',
-    image: '',
   });
 
   useEffect(() => {
@@ -27,7 +26,6 @@ function ArticleEdit() {
           price: articleData.price,
           condition: articleData.condition,
           category: articleData.category,
-          image: articleData.image,
         });
       })
       .catch((error) => {
@@ -116,15 +114,6 @@ function ArticleEdit() {
             <option value="jewels">Joyas</option>
             <option value="electronics">Electrónica</option>
           </select>
-        </label>
-        <label>
-          URL de la imagen:
-          <input
-            type="text"
-            name="image"
-            value={formData.image}
-            onChange={handleInputChange}
-          />
         </label>
         <button type="submit">Guardar Cambios</button>
       </form>

@@ -66,3 +66,15 @@
 .action-buttons button:hover {
   background-color: #0056b3;
 }
+
+.container .seller-info {
+  display: flex;
+  align-items: left;
+}
+
+.container .seller-image {
+  width: 40px; /* Ajusta el ancho de la imagen según tus preferencias */
+  height: 40px; /* Ajusta la altura de la imagen según tus preferencias */
+  border-radius: 50%; /* Hace que la imagen sea un círculo */
+  margin-right: 10px; /* Agrega un margen a la derecha del círculo */
+}

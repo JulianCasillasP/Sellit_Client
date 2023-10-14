@@ -2,13 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
-import "./ArticleDetails.css"
+import "./ArticleDetails.css";
 
 function ArticleDetail() {
   const API_URL = 'http://localhost:5005';
   const { articleId } = useParams();
-  const { user, isAdmin } = useContext(AuthContext); 
-  const navigate = useNavigate(); 
+  const { user, isAdmin } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [article, setArticle] = useState(null);
 
   useEffect(() => {
@@ -51,8 +51,15 @@ function ArticleDetail() {
 
   return (
     <div className="container">
-     <p>Seller: {article.seller.username}</p>
-     
+      <div className="seller-info">
+  <img
+    src={article.seller.profileImage}
+    alt={`Imagen de perfil del vendedor`}
+    className="seller-image"
+  />
+  <p className="seller-name">{article.seller.username}</p>
+</div>
+
       <div className="article-details">
         <img
           src={article.image[0]}
@@ -66,12 +73,12 @@ function ArticleDetail() {
           <p>Description: {article.description}</p>
         </div>
       </div>
-     
+
       <div className="action-buttons">
         {(isOwner || isAdmin) && (
           <div>
-            <button onClick={handleEdit}>Editar</button>
-            <button className="delete" onClick={handleDelete}>Eliminar</button>
+            <button onClick={handleEdit}>Edit</button>
+            <button className="delete" onClick={handleDelete}>Delete</button>
           </div>
         )}
       </div>

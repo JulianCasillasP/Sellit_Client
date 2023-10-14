@@ -23,18 +23,22 @@ function ProfilePage() {
 
   return (
     <div className="profile-page">
-      <h1>Mi Perfil.</h1>
+    
       {showCreateArticle ? (
         <CreateArticle onArticleCreated={handleArticleCreated} />
       ) : (
         <button className="create-article-button" onClick={toggleCreateArticle}>
-          Crear Artículo
+          Create Article.
         </button>
       )}
-     
-      {showCreateArticle ? null : <UserProfile />}
       
+      
+     <div classname="user-profile">
+      {showCreateArticle ? null : <UserProfile />}
+      </div>
+      <div classname="article-user">
       {showCreateArticle ? null : <ArticleUser user={authContext.user._id} />}
+      </div>
     </div>
   );
 }

@@ -62,7 +62,7 @@ function ArticleList() {
       </div>
 
       {articles.length === 0 ? (
-        <p>No hay artículos disponibles.</p>
+        <p>There are no items available.</p>
       ) : (
         <div className="article-list">
           {filteredArticles.map((article) => (

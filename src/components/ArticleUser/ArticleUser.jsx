@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../context/auth.context';
 import './ArticleUser.css'; 
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate desde 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'; 
 function ArticleUser() {
   const API_URL = 'http://localhost:5005';
   const authContext = useContext(AuthContext);
   const [userArticles, setUserArticles] = useState([]);
-  const navigate = useNavigate(); // Declara una función de navegación
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (authContext.isLoggedIn) {
       axios
@@ -33,7 +30,6 @@ function ArticleUser() {
     axios
       .delete(`${API_URL}/article/${articleId}`)
       .then(() => {
-        // Navega a la página de inicio u otra página después de eliminar
         navigate('/');
       })
       .catch((error) => {
@@ -43,19 +39,19 @@ function ArticleUser() {
   
   return (
     <div>
-      <h1>Mis artículos en venta:</h1>
+      <h1>My items for sale:</h1>
       <ul className="article-list">
         {userArticles.map((article) => (
           <li key={article._id} className="article-card">
             <h2>{article.name}</h2>
-            <p>Descripción: {article.description}</p>
-            <p>Precio: ${article.price}</p>
-            <p>Condición: {article.condition}</p>
+            <p>Description: {article.description}</p>
+            <p>Price: €{article.price}</p>
+            <p>Condition: {article.condition}</p>
             <img className="image" src={article.image[0]} alt={article.title} />
             <div className="action-buttons">
-              <button onClick={() => handleEdit(article._id)}>Editar</button>
-              <button onClick={() => navigate(`/article/${article._id}`)}>detalles</button>
-              <button className="delete" onClick={() => handleDelete(article._id)}>Eliminar</button>
+              <button onClick={() => handleEdit(article._id)}>Edit</button>
+              <button onClick={() => navigate(`/article/${article._id}`)}>details</button>
+              <button className="delete" onClick={() => handleDelete(article._id)}>Delete</button>
             </div>
            
           </li>

@@ -3,13 +3,13 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
 
-
 function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
+  const [profileImage, setProfileImage] = useState(null); // Nuevo estado para la imagen de perfil
   const [errorMessage, setErrorMessage] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
@@ -19,7 +19,13 @@ function SignupPage() {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleConfirmPassword = (e) => setConfirmPassword(e.target.value);
   const handleName = (e) => setUsername(e.target.value);
-  const handleAdminPassword = (e) => setAdminPassword(e.target.value); 
+  const handleAdminPassword = (e) => setAdminPassword(e.target.value);
+  
+  // Nuevo manejador para cargar una imagen de perfil
+  const handleProfileImage = (e) => {
+    const file = e.target.files[0];
+    setProfileImage(file);
+  };
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
@@ -30,11 +36,16 @@ function SignupPage() {
       return;
     }
 
-    // Resto del código para enviar la solicitud de registro
-    const requestBody = { email, password, username, adminPassword }; 
+    // Crear un objeto FormData para enviar la imagen de perfil
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("username", username);
+    formData.append("adminPassword", adminPassword);
+    formData.append("profileImage", profileImage); // Agregar la imagen de perfil al formulario
 
     authService
-      .signup(requestBody)
+      .signup(formData) // Modifica tu servicio para que acepte FormData
       .then((response) => {
         // Si la solicitud es exitosa, redirige al usuario
         navigate("/login");
@@ -61,7 +72,7 @@ function SignupPage() {
           onChange={handlePassword}
         />
 
-        <label>Confirmar Contraseña:</label>
+        <label>Confirm Password:</label>
         <input
           type="password"
           name="confirmPassword"
@@ -74,7 +85,7 @@ function SignupPage() {
         <input type="text" name="name" value={username} onChange={handleName} />
 
         {/* Nuevo campo para la contraseña de administrador */}
-        <label>Contraseña de Administrador:</label>
+        <label>Admin Password:</label>
         <input
           type="password"
           name="adminPassword"
@@ -82,12 +93,21 @@ function SignupPage() {
           onChange={handleAdminPassword}
         />
 
+        {/* Nuevo campo para cargar una imagen de perfil */}
+        <label>Profile Image:</label>
+        <input
+          type="file"
+          accept="image/*"
+          name="profileImage"
+          onChange={handleProfileImage}
+        />
+
         <button type="submit">Sign Up</button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>¿Ya tienes una cuenta?</p>
+      <p>Already have a account?</p>
       <Link to={"/login"}> Login</Link>
     </div>
   );
