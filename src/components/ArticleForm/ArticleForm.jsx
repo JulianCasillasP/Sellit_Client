@@ -5,7 +5,7 @@ import './ArticleForm.css'
 import { useNavigate } from 'react-router-dom'
 
 function ArticleForm() {
-  const API_URL = 'http://localhost:5005'
+  const API_URL = `${process.env.REACT_APP_SERVER_URL}`
   const [articleData, setArticleData] = useState({
     name: '',
     description: '',

@@ -5,7 +5,7 @@ import './ArticleList.css';
 import { AuthContext } from '../../context/auth.context';
 
 function ArticleList() {
-  const API_URL = 'http://localhost:5005';
+  const API_URL = `${process.env.REACT_APP_SERVER_URL}`;
   const [articles, setArticles] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const { isLoggedIn } = useContext(AuthContext);

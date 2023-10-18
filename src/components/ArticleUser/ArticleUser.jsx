@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/auth.context';
 import './ArticleUser.css'; 
 import { useNavigate } from 'react-router-dom'; 
 function ArticleUser() {
-  const API_URL = 'http://localhost:5005';
+  const API_URL = `${process.env.REACT_APP_SERVER_URL}`;
   const authContext = useContext(AuthContext);
   const [userArticles, setUserArticles] = useState([]);
   const navigate = useNavigate();

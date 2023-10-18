@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/auth.context';
 import "./ArticleDetails.css";
 
 function ArticleDetail() {
-  const API_URL = 'http://localhost:5005';
+  const API_URL = `${process.env.REACT_APP_SERVER_URL}`;
   const { articleId } = useParams();
   const { user, isAdmin } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -69,7 +69,7 @@ function ArticleDetail() {
         <div className="article-info">
           <h1>€{article.price}</h1>
           <h2>{article.name}</h2>
-          <p>{article.condition}</p>
+          <h2>{article.condition}</h2>
           <p>Description: {article.description}</p>
         </div>
       </div>
