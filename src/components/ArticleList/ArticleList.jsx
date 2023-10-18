@@ -21,6 +21,7 @@ function ArticleList() {
       .catch((error) => {
         console.error('Error al obtener la lista de artículos:', error);
       });
+      //eslint-disable-next-line
   }, []);
 
   // Traducción de categorías

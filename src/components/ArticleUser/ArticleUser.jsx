@@ -20,6 +20,7 @@ function ArticleUser() {
           console.error('Error al obtener los artículos del usuario:', error);
         });
     }
+    //eslint-disable-next-line
   }, [authContext.isLoggedIn, authContext.user]);
 
   const handleEdit = (articleId) => {

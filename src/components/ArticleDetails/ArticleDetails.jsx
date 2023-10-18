@@ -20,6 +20,7 @@ function ArticleDetail() {
       .catch((error) => {
         console.error('Error al obtener los detalles del artículo:', error);
       });
+      //eslint-disable-next-line
   }, [articleId]);
 
   if (!article) {
