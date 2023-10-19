@@ -1,29 +1,26 @@
 # Sellit_Client
 
-# Proyecto de Venta de Artículos Usados
+## Used Items Sales Project
 
-Bienvenido al repositorio del Proyecto de Venta de Artículos Usados. Esta aplicación web permite a los usuarios comprar y vender artículos usados de manera sencilla y eficiente. 
-Bienvenido al repositorio del Proyecto de Venta de Artículos Usados. Esta aplicación web permite a los usuarios comprar y vender artículos usados de manera sencilla y eficiente. 
+Welcome to the repository of the Used Items Sales Project. This web application allows users to buy and sell used items easily and efficiently.
 
-## Repositorios
+## Repositories
 
-Este proyecto se divide en dos repositorios separados:
+This project is divided into two separate repositories:
 
- https://github.com/JulianCasillasP/Sellit_Client
+- [Frontend Repository](https://github.com/JulianCasillasP/Sellit_Client)
+- [Backend Repository](https://github.com/JulianCasillasP/Sellit_Server)
 
- https://github.com/JulianCasillasP/Sellit_Server
+The frontend is in a separate repository from the backend to facilitate development.
 
+## Deployment
 
-Este frontend se encuentra en un repositorio independiente al backend para facilitar el desarrollo. 
+You can view the fully deployed application [here](https://selliit.netlify.app/).
 
-## Despliegue
+## Installation Guide
 
-Puedes ver la aplicación completamente desplegada aquí.
-
-## Guía de instalación
-
-- Hacer un fork de este repositorio
-- Clonar este repositorio
+- Fork this repository.
+- Clone this repository
 
 ```shell
 $ cd Sellit_Client
@@ -34,40 +31,40 @@ $ npm start
 
 ## Funcionalidades
 
-El frontend del Proyecto de Venta de Artículos Usados ofrece las siguientes funcionalidades:
+The frontend of the Used Items Sales Project offers the following features:
 
-Explorar Artículos: Los usuarios pueden navegar y explorar la lista de artículos disponibles para la compra.
+* Explore Items: Users can browse and explore the list of items available for purchase.
 
-Ver Detalles del Artículo: Los usuarios pueden ver detalles completos de un artículo específico, incluyendo su nombre, fotografía, descripción, precio y condición.
+* View Item Details: Users can view complete details of a specific item, including its name, photo, description, price, and condition.
 
-Crear un Nuevo Artículo: Los usuarios registrados pueden crear nuevos anuncios para vender sus artículos usados.
+* Create a New Item: Registered users can create new listings to sell their used items.
 
-Editar y Eliminar Anuncios: Los usuarios registrados pueden editar y eliminar sus propios anuncios.
+* Edit and Delete Listings: Registered users can edit and delete their own listings.
 
-Registro y Autenticación: Los usuarios pueden registrarse como nuevos usuarios y autenticarse para acceder a funciones exclusivas.
+* Registration and Authentication: Users can register as new users and authenticate to access exclusive features.
 
-## Rutas
+## Routes
 
 | Route                               | Privacy          | Renders                   |
 | ----------------------------------- | :--------------: | --------------------------|
 | /                                   | Public           | Home Page                 |
 | /categories                         | Public           | Categories Page           |
 | /categories/:category               | Public           | Articles List Page        |
-| /categories/:category/:id           | Public           | Article Details Page      |
+| /categories/:category/:id           | private (user)   | Article Details Page      |
 | /post-article                       | Private (user)   | Post Article Form         |
 | /login                              | Public           | Login Page                |
 | /signup                             | Public           | Signup Page               |
 | /profile                            | Private (user)   | User Profile Page         |
 | /my-articles                        | Private (user)   | My Articles List Page     |
-| /my-purchases                       | Private (user)   | My Purchases List Page    |
 | /admin                              | Private (admin)  | Admin Panel Page          |
 | /admin/article/:id                  | Private (admin)  | Edit Article Page         |
 
 
-## Uso de Componentes y Estilos
-En el desarrollo de este frontend, hemos utilizado una variedad de componentes de React y estilos CSS para lograr una interfaz de usuario atractiva y fácil de usar. Estos componentes y estilos se han organizado de manera modular y se pueden reutilizar en todo el proyecto.
+## Use of Components and Styles.
 
-## Componentes
+In the development of this frontend, we have used a variety of React components and CSS styles to achieve an attractive and user-friendly user interface. These components and styles have been organized in a modular fashion and can be reused throughout the project.
+
+## Components
 - Navigation Bar (Navbar)
 - Article Form (ArticleForm)
 - Article List (ArticleList)
@@ -76,4 +73,3 @@ En el desarrollo de este frontend, hemos utilizado una variedad de componentes d
 - Signup Form (SignupForm)
 - User Profile (UserProfile)
 - My Articles List (MyArticlesList)
-- My Purchases List (MyPurchasesList)
