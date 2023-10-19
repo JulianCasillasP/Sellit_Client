@@ -28,7 +28,7 @@ function ArticleList() {
   const categoryTranslations = {
     clothes: 'Clothes',
     shoes: 'Shoes',
-    electronics: 'Electrónics',
+    electronics: 'Electronics',
     jewels: 'Jewels',
   };
 
@@ -76,7 +76,7 @@ function ArticleList() {
                 <h3>€{article.price}</h3>
                 {isLoggedIn && (
                   <Link to={`/article/${article._id}`} className="details-button">
-                    Ver detalles
+                    Details
                   </Link>
                 )}
               </div>

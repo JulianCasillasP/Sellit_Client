@@ -67,10 +67,9 @@ function ArticleForm() {
 
   return (
     <div>
-      <h1>Crear Artículo</h1>
       <form className="container" onSubmit={handleSubmit}>
         <label>
-          Nombre:
+          Name:
           <input
             type="text"
             name="name"
@@ -80,7 +79,7 @@ function ArticleForm() {
           />
         </label>
         <label>
-          Descripción:
+          Description:
           <textarea
             name="description"
             value={articleData.description}
@@ -89,7 +88,7 @@ function ArticleForm() {
           />
         </label>
         <label>
-          Precio:
+          Price:
           <input
             type="number"
             name="price"
@@ -99,20 +98,20 @@ function ArticleForm() {
           />
         </label>
         <label>
-          Condición:
+          Condition:
           <select
             name="condition"
             value={articleData.condition}
             onChange={handleInputChange}
             required
           >
-            <option value="new">Nuevo</option>
-            <option value="like new">Como Nuevo</option>
-            <option value="used">Usado</option>
+            <option value="new">New</option>
+            <option value="like new">Like new</option>
+            <option value="used">Used</option>
           </select>
         </label>
         <label>
-          Categoría:
+          Category:
           <select
             name="category"
             value={articleData.category}
@@ -126,7 +125,7 @@ function ArticleForm() {
           </select>
         </label>
         <label htmlFor="product-image">
-          Imagen:
+          Image:
           <input
             type="file"
             name="image"
@@ -136,7 +135,7 @@ function ArticleForm() {
             required
           />
         </label>
-        <button type="submit">Crear Artículo</button>
+        <button type="submit">Create Article</button>
       </form>
     </div>
   )

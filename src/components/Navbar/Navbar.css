@@ -50,6 +50,6 @@ img {
 }
 
 .navbar-button:hover {
-  background-color: #b4eeff; /* Cambia el color de fondo en el hover */
+  background-color: #009ac9;; /* Cambia el color de fondo en el hover */
   color: black; /* Color del texto en el hover */
 }

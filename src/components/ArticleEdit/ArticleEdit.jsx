@@ -97,9 +97,9 @@ function ArticleEdit() {
             onChange={handleInputChange}
             required
           >
-            <option value="new">Nuevo</option>
-            <option value="like new">Como Nuevo</option>
-            <option value="used">Usado</option>
+            <option value="new">New</option>
+            <option value="like new">Like new</option>
+            <option value="used">Used</option>
           </select>
         </label>
         <label>

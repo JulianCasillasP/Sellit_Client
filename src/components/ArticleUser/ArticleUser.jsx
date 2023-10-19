@@ -45,9 +45,6 @@ function ArticleUser() {
         {userArticles.map((article) => (
           <li key={article._id} className="article-card">
             <h2>{article.name}</h2>
-            <p>Description: {article.description}</p>
-            <p>Price: €{article.price}</p>
-            <p>Condition: {article.condition}</p>
             <img className="image" src={article.image[0]} alt={article.title} />
             <div className="action-buttons">
               <button onClick={() => handleEdit(article._id)}>Edit</button>

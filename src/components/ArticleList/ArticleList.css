@@ -15,7 +15,6 @@
   max-height: 200px;
   display: block;
   margin: 0 auto;
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -74,13 +73,17 @@
   padding: 8px 16px;
   margin: 5px; /* Margen entre botones */
   border-radius: 40px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s; /* Agregar transición para el cambio de color */
   cursor: pointer;
   font-family: 'Lalezar', cursive;
 }
 
 .category-buttons button.active {
   background-color: #22ccff;
+}
+
+.category-buttons button:hover {
+  background-color: #00b8f0; 
 }
 
 
